@@ -11,7 +11,7 @@ navbar:
       icon: fa-user 
       href: about.html
     - text: "EZtune"
-      icon: fa-music-note 
+      icon: fa-music 
       href: eztune.html
   right:
     - text: "Contact me"

@@ -1,12 +1,6 @@
 ---
 title: "EZtune: automatic hyperparameter tuning for supervised learning"
 author: "Jill Lundell"
-categories: ["Statistical learning"]
-tags: ["Statistical learning", "Support vector machines", "Gradient boosting machines", "Adaboost", "Tuning", "R"]
-thumbnailImage: /img/machine_learning.jpg
-thumbnailImagePosition: left
-coverImage: /img/machine_learning.jpg
-coverSize: partial
 ---
 
 EZtune is an R package that automatically tunes hyperparameters for supervised learning models.

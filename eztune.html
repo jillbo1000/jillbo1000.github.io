@@ -261,7 +261,7 @@ $(document).ready(function () {
 </li>
 <li>
   <a href="eztune.html">
-    <span class="fa fa-music-note"></span>
+    <span class="fa fa-music"></span>
      
     EZtune
   </a>
@@ -360,10 +360,10 @@ m1$accuracy</code></pre>
 <pre class="r"><code># Compute the 10-fold cross-validation accuracy for the model
 eztune_cv(x, y, m1)</code></pre>
 <pre><code>## $accuracy
-## [1] 0.63
+## [1] 0.7
 ## 
 ## $auc
-## [1] 0.5962385</code></pre>
+## [1] 0.6534091</code></pre>
 <p><strong>Tune a GBM using 50 of the data as the training set and
 compute the accuracy with 10-fold cross validation</strong></p>
 <pre class="r"><code># Optimize GBM using training set of 50 observations and Hooke-Jeeves
@@ -373,10 +373,10 @@ m2$accuracy</code></pre>
 <pre class="r"><code># Compute the 10-fold cross-validation accuracy for the model
 eztune_cv(x, y, m2)</code></pre>
 <pre><code>## $accuracy
-## [1] 0.72
+## [1] 0.68
 ## 
 ## $auc
-## [1] 0.7178872</code></pre>
+## [1] 0.6534091</code></pre>
 <p><strong>Tune an SVM using 25% of the data as a training set and
 compute the accuracy with 10-fold cross validation</strong></p>
 <pre class="r"><code># Optimize SVM with 25% of the observations as a training dataset
@@ -387,10 +387,10 @@ m3$accuracy</code></pre>
 <pre class="r"><code># Compute the 10-fold cross-validation accuracy for the model
 eztune_cv(x, y, m3)</code></pre>
 <pre><code>## $accuracy
-## [1] 0.73
+## [1] 0.61
 ## 
 ## $auc
-## [1] 0.7138856</code></pre>
+## [1] 0.6176948</code></pre>
 
 
 
