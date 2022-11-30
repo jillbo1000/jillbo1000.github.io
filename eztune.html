@@ -9,14 +9,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Jill Lundell" />
 
 
-<title>My Website</title>
+<title>EZtune: automatic hyperparameter tuning for supervised learning</title>
 
 <script src="site_libs/header-attrs-2.18/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -30,8 +31,10 @@
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -230,7 +233,7 @@ $(document).ready(function () {
 
 
 
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
@@ -238,14 +241,47 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">My Website</a>
+      <a class="navbar-brand" href="index.html">Jill Lundell</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="about.html">
+    <span class="fa fa-user"></span>
+     
+    About
+  </a>
+</li>
+<li>
+  <a href="eztune.html">
+    <span class="fa fa-music-note"></span>
+     
+    EZtune
+  </a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="mailto:jlundell@ds.dfci.harvard.edu">
+    <span class="fa fa-envelope-o"></span>
+     
+    Contact me
+  </a>
+</li>
+<li>
+  <a href="https://github.com/jillbo1000">
+    <span class="fa fa-github"></span>
+     
+    GitHub
+  </a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -255,12 +291,106 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">My Website</h1>
+<h1 class="title toc-ignore">EZtune: automatic hyperparameter tuning for
+supervised learning</h1>
+<h4 class="author">Jill Lundell</h4>
 
 </div>
 
 
-<p>Hello, Website! Welcome to the world.</p>
+<p>EZtune is an R package that automatically tunes hyperparameters for
+supervised learning models.</p>
+<!--more-->
+<p>EZtune is an R package that autotunes support vector machines (SVMs),
+gradient boosting machines (GBMs), and adaboost models with either a
+binary or continuous response variable. Other packages on CRAN will tune
+these models, but they can be difficult to use or are spread across many
+packages. EZtune was designed to be simple to use, even for a novice R
+user, while maintaining high performance. EZtune was built using the
+following principles:</p>
+<p><strong>Predetermined hyperparameter space</strong>: Extensive grid
+searches were done to identify hyperparameter spaces where good models
+are found across many datasets. These hyperparameter spaces are coded
+into EZtune so the user does not need to provide this information.</p>
+<p><strong>Optimization across the hyperparameter space</strong>:
+Optimization algorithms were tested to determine which ones can find a
+good set of hyperparameters based on model accuracy or mean squared
+error (MSE). I found that the Hooke-Jeeves algorithm found models with
+the best accuracy measures and had fast computation time so it is the
+default optimizer in the package. A genetic algorithm was slower, but
+also produced good models so it is included as an option.</p>
+<p><strong>Fast performance options</strong>: EZtune can optimize on the
+resubstitution, cross-validation, or validation dataset accuracies or
+MSEs. Optimizing on resubstitution accuracy is only included for
+completeness because it produces models with poor accuracy and has slow
+computation time. The best models are obtained using cross-validation
+accuracy, but the computation time can be slow. The default method is to
+randomly split the data into a training and test dataset. This often
+produces models with accuracy as good as those optimized with
+cross-validation, but with a fraction of the computation time.</p>
+<p><strong>Well performing models</strong>: Testing showed that both
+cross-validation and data splitting methods produce a model that had
+accuracies or MSEs that are close to the best model obtained through an
+extensive grid search. Computation time is much faster using EZtune than
+for a grid search. It was found that at least 50% of the data should be
+used to train the model to obtain good results.</p>
+<p><strong>Easy to use</strong>: EZtune was designed to be accessible to
+someone new to R and supervised learning models. The package consists of
+only two functions</p>
+<ul>
+<li>eztune: tunes an SVM, GBM, or adaboost model by optimizing
+classification accuracy or mean squared error (MSE)</li>
+<li>eztune_cv: computes a cross-validated accuracy rate or MSE for a
+model computed using eztune.</li>
+</ul>
+<p>The following code examples demonstrate how to use the functions.</p>
+<p><strong>Tune an SVM using the default fast option and then compute
+the accuracy with 10-fold cross validation</strong></p>
+<pre class="r"><code>library(EZtune)
+library(mlbench)
+data(Sonar)
+sonar &lt;- Sonar[sample(1:nrow(Sonar), 100), ]
+y &lt;- sonar[, 61]
+x &lt;- sonar[, 1:10]
+
+# Optimize an SVM using the default fast setting and Hooke-Jeeves
+m1 &lt;- eztune(x, y)
+m1$accuracy</code></pre>
+<pre><code>## NULL</code></pre>
+<pre class="r"><code># Compute the 10-fold cross-validation accuracy for the model
+eztune_cv(x, y, m1)</code></pre>
+<pre><code>## $accuracy
+## [1] 0.63
+## 
+## $auc
+## [1] 0.5962385</code></pre>
+<p><strong>Tune a GBM using 50 of the data as the training set and
+compute the accuracy with 10-fold cross validation</strong></p>
+<pre class="r"><code># Optimize GBM using training set of 50 observations and Hooke-Jeeves
+m2 &lt;- eztune(x, y, method = &quot;gbm&quot;, fast = 50)
+m2$accuracy</code></pre>
+<pre><code>## NULL</code></pre>
+<pre class="r"><code># Compute the 10-fold cross-validation accuracy for the model
+eztune_cv(x, y, m2)</code></pre>
+<pre><code>## $accuracy
+## [1] 0.72
+## 
+## $auc
+## [1] 0.7178872</code></pre>
+<p><strong>Tune an SVM using 25% of the data as a training set and
+compute the accuracy with 10-fold cross validation</strong></p>
+<pre class="r"><code># Optimize SVM with 25% of the observations as a training dataset
+# using a genetic algorithm
+m3 &lt;- eztune(x, y, method = &quot;svm&quot;, optimizer = &quot;ga&quot;, fast = 0.25)
+m3$accuracy</code></pre>
+<pre><code>## NULL</code></pre>
+<pre class="r"><code># Compute the 10-fold cross-validation accuracy for the model
+eztune_cv(x, y, m3)</code></pre>
+<pre><code>## $accuracy
+## [1] 0.73
+## 
+## $auc
+## [1] 0.7138856</code></pre>
 
 
 

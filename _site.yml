@@ -1,12 +1,26 @@
-name: "my-website"
-theme: slate
-title: Jill's homepage
-description: Bookmark this to keep an eye on my project updates!
+name: "jill Lundell"                                # CHANGE HERE 
+output_dir: "."
 navbar:
-  title: "My Website"
-left:
-  - text: "Home"
-href: index.html
-- text: "About"
-href: about.html
-
+  title: "Jill Lundell"                             # CHANGE HERE 
+  type: inverse
+  left:
+    - text: "Home"
+      icon: fa-home
+      href: index.html
+    - text: "About"
+      icon: fa-user 
+      href: about.html
+    - text: "EZtune"
+      icon: fa-music-note 
+      href: eztune.html
+  right:
+    - text: "Contact me"
+      icon: fa-envelope-o
+      href: mailto:jlundell@ds.dfci.harvard.edu        # CHANGE HERE 
+    - text: "GitHub"
+      icon: fa-github
+      href: https://github.com/jillbo1000       # CHANGE HERE 
+output:
+  html_document:
+    theme: cosmo
+    highlight: textmate
