@@ -1,6 +1,7 @@
 ---
 title: "Test website"
 author: "Jill Lundell"
+output: rmarkdown::github_document
 ---
 
 ```{r setup, include=FALSE}
