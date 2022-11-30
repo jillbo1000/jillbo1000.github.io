@@ -1,4 +1,12 @@
+name: "my-website"
 theme: slate
 title: Jill's homepage
 description: Bookmark this to keep an eye on my project updates!
+navbar:
+  title: "My Website"
+left:
+  - text: "Home"
 href: index.html
+- text: "About"
+href: about.html
+
