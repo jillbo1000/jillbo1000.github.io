@@ -14,10 +14,10 @@
 
 <title>EZtune: automatic hyperparameter tuning for supervised learning</title>
 
-<script src="site_libs/header-attrs-2.18/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -31,7 +31,7 @@
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
@@ -360,10 +360,10 @@ m1$accuracy</code></pre>
 <pre class="r"><code># Compute the 10-fold cross-validation accuracy for the model
 eztune_cv(x, y, m1)</code></pre>
 <pre><code>## $accuracy
-## [1] 0.7
+## [1] 0.71
 ## 
 ## $auc
-## [1] 0.6534091</code></pre>
+## [1] 0.7902576</code></pre>
 <p><strong>Tune a GBM using 50 of the data as the training set and
 compute the accuracy with 10-fold cross validation</strong></p>
 <pre class="r"><code># Optimize GBM using training set of 50 observations and Hooke-Jeeves
@@ -373,10 +373,10 @@ m2$accuracy</code></pre>
 <pre class="r"><code># Compute the 10-fold cross-validation accuracy for the model
 eztune_cv(x, y, m2)</code></pre>
 <pre><code>## $accuracy
-## [1] 0.68
+## [1] 0.74
 ## 
 ## $auc
-## [1] 0.6534091</code></pre>
+## [1] 0.7383253</code></pre>
 <p><strong>Tune an SVM using 25% of the data as a training set and
 compute the accuracy with 10-fold cross validation</strong></p>
 <pre class="r"><code># Optimize SVM with 25% of the observations as a training dataset
@@ -387,10 +387,10 @@ m3$accuracy</code></pre>
 <pre class="r"><code># Compute the 10-fold cross-validation accuracy for the model
 eztune_cv(x, y, m3)</code></pre>
 <pre><code>## $accuracy
-## [1] 0.61
+## [1] 0.7
 ## 
 ## $auc
-## [1] 0.6176948</code></pre>
+## [1] 0.7648953</code></pre>
 
 
 
