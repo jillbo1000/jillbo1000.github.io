@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Jill Lundell" />
+
+
+<title>EZtune: automatic hyperparameter tuning for supervised learning</title>
+
+<script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Jill Lundell</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="about.html">
+    <span class="fa fa-user"></span>
+     
+    About
+  </a>
+</li>
+<li>
+  <a href="eztune.html">
+    <span class="fa fa-music"></span>
+     
+    EZtune
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="mailto:jlundell@ds.dfci.harvard.edu">
+    <span class="fa fa-envelope-o"></span>
+     
+    Contact me
+  </a>
+</li>
+<li>
+  <a href="https://github.com/jillbo1000">
+    <span class="fa fa-github"></span>
+     
+    GitHub
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">EZtune: automatic hyperparameter tuning for
+supervised learning</h1>
+<h4 class="author">Jill Lundell</h4>
+
+</div>
+
+
+<p>EZtune is an R package that automatically tunes hyperparameters for
+supervised learning models.</p>
+<!--more-->
+<p>EZtune is an R package that autotunes support vector machines (SVMs),
+gradient boosting machines (GBMs), and adaboost models with either a
+binary or continuous response variable. Other packages on CRAN will tune
+these models, but they can be difficult to use or are spread across many
+packages. EZtune was designed to be simple to use, even for a novice R
+user, while maintaining high performance. EZtune was built using the
+following principles:</p>
+<p><strong>Predetermined hyperparameter space</strong>: Extensive grid
+searches were done to identify hyperparameter spaces where good models
+are found across many datasets. These hyperparameter spaces are coded
+into EZtune so the user does not need to provide this information.</p>
+<p><strong>Optimization across the hyperparameter space</strong>:
+Optimization algorithms were tested to determine which ones can find a
+good set of hyperparameters based on model accuracy or mean squared
+error (MSE). I found that the Hooke-Jeeves algorithm found models with
+the best accuracy measures and had fast computation time so it is the
+default optimizer in the package. A genetic algorithm was slower, but
+also produced good models so it is included as an option.</p>
+<p><strong>Fast performance options</strong>: EZtune can optimize on the
+resubstitution, cross-validation, or validation dataset accuracies or
+MSEs. Optimizing on resubstitution accuracy is only included for
+completeness because it produces models with poor accuracy and has slow
+computation time. The best models are obtained using cross-validation
+accuracy, but the computation time can be slow. The default method is to
+randomly split the data into a training and test dataset. This often
+produces models with accuracy as good as those optimized with
+cross-validation, but with a fraction of the computation time.</p>
+<p><strong>Well performing models</strong>: Testing showed that both
+cross-validation and data splitting methods produce a model that had
+accuracies or MSEs that are close to the best model obtained through an
+extensive grid search. Computation time is much faster using EZtune than
+for a grid search. It was found that at least 50% of the data should be
+used to train the model to obtain good results.</p>
+<p><strong>Easy to use</strong>: EZtune was designed to be accessible to
+someone new to R and supervised learning models. The package consists of
+only two functions</p>
+<ul>
+<li>eztune: tunes an SVM, GBM, or adaboost model by optimizing
+classification accuracy or mean squared error (MSE)</li>
+<li>eztune_cv: computes a cross-validated accuracy rate or MSE for a
+model computed using eztune.</li>
+</ul>
+<p>The following code examples demonstrate how to use the functions.</p>
+<p><strong>Tune an SVM using the default fast option and then compute
+the accuracy with 10-fold cross validation</strong></p>
+<pre class="r"><code>library(EZtune)
+library(mlbench)
+data(Sonar)
+sonar &lt;- Sonar[sample(1:nrow(Sonar), 100), ]
+y &lt;- sonar[, 61]
+x &lt;- sonar[, 1:10]
+
+# Optimize an SVM using the default fast setting and Hooke-Jeeves
+m1 &lt;- eztune(x, y)
+m1$accuracy</code></pre>
+<pre><code>## NULL</code></pre>
+<pre class="r"><code># Compute the 10-fold cross-validation accuracy for the model
+eztune_cv(x, y, m1)</code></pre>
+<pre><code>## $accuracy
+## [1] 0.71
+## 
+## $auc
+## [1] 0.7902576</code></pre>
+<p><strong>Tune a GBM using 50 of the data as the training set and
+compute the accuracy with 10-fold cross validation</strong></p>
+<pre class="r"><code># Optimize GBM using training set of 50 observations and Hooke-Jeeves
+m2 &lt;- eztune(x, y, method = &quot;gbm&quot;, fast = 50)
+m2$accuracy</code></pre>
+<pre><code>## NULL</code></pre>
+<pre class="r"><code># Compute the 10-fold cross-validation accuracy for the model
+eztune_cv(x, y, m2)</code></pre>
+<pre><code>## $accuracy
+## [1] 0.74
+## 
+## $auc
+## [1] 0.7383253</code></pre>
+<p><strong>Tune an SVM using 25% of the data as a training set and
+compute the accuracy with 10-fold cross validation</strong></p>
+<pre class="r"><code># Optimize SVM with 25% of the observations as a training dataset
+# using a genetic algorithm
+m3 &lt;- eztune(x, y, method = &quot;svm&quot;, optimizer = &quot;ga&quot;, fast = 0.25)
+m3$accuracy</code></pre>
+<pre><code>## NULL</code></pre>
+<pre class="r"><code># Compute the 10-fold cross-validation accuracy for the model
+eztune_cv(x, y, m3)</code></pre>
+<pre><code>## $accuracy
+## [1] 0.7
+## 
+## $auc
+## [1] 0.7648953</code></pre>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+EZtune is an R package that automatically tunes hyperparameters for supervised learning models.
+
+
+<!--more-->
+
+
+
+EZtune is an R package that autotunes support vector machines (SVMs), gradient boosting machines (GBMs), 
+and adaboost models with either a binary or continuous response variable. Other packages on CRAN will tune 
+these models, but they can be difficult to use or are spread across many packages. EZtune was designed 
+to be simple to use, even for a novice R user, while maintaining high performance. EZtune was built using
+the following principles: 
+
+**Predetermined hyperparameter space**: Extensive grid searches were done to identify 
+hyperparameter spaces where good models are found across many datasets. These 
+hyperparameter spaces are coded into EZtune so the user does not need to provide 
+this information. 
+
+**Optimization across the hyperparameter space**: Optimization algorithms were tested 
+to determine which ones can find a good set of hyperparameters based on model accuracy 
+or mean squared error (MSE). I found that the Hooke-Jeeves algorithm found models with the 
+best accuracy measures and had fast 
+computation time so it is the default optimizer in the package. A genetic algorithm 
+was slower, but also produced good models so it is included as an option. 
+
+**Fast performance options**: EZtune can optimize on the resubstitution, cross-validation, 
+or validation dataset accuracies or MSEs. Optimizing on resubstitution accuracy is only included 
+for completeness because it produces models 
+with poor accuracy and has slow computation time. The best models are 
+obtained using cross-validation accuracy, but the computation time can be slow. The 
+default method is to randomly split the data into a training and test dataset. This 
+often produces models with accuracy as good as those optimized with cross-validation, 
+but with a fraction of the computation time.
+
+**Well performing models**: Testing showed that both cross-validation and data splitting methods produce a model that had accuracies or MSEs that are close to the best model obtained through an extensive grid search. Computation time is much faster using EZtune than for a grid search. It was found that at least 50\% of the data should be used to train the model to obtain good results.
+
+**Easy to use**: EZtune was designed to be accessible to someone new to R and supervised learning models. The package consists of only two functions
+
+* eztune: tunes an SVM, GBM, or adaboost model by optimizing classification accuracy or mean squared error (MSE)
+* eztune_cv: computes a cross-validated accuracy rate or MSE for a model computed using eztune. 
+
+The following code examples demonstrate how to use the functions. 
+
+
+**Tune an SVM using the default fast option and then compute the accuracy with 10-fold cross validation**
+
+```{r}
+
+library(EZtune)
+library(mlbench)
+data(Sonar)
+sonar <- Sonar[sample(1:nrow(Sonar), 100), ]
+y <- sonar[, 61]
+x <- sonar[, 1:10]
+
+# Optimize an SVM using the default fast setting and Hooke-Jeeves
+m1 <- eztune(x, y)
+m1$accuracy
+
+# Compute the 10-fold cross-validation accuracy for the model
+eztune_cv(x, y, m1)
+
+```
+
+
+**Tune a GBM using 50 of the data as the training set and compute 
+the accuracy with 10-fold cross validation**
+
+```{r}
+# Optimize GBM using training set of 50 observations and Hooke-Jeeves
+m2 <- eztune(x, y, method = "gbm", fast = 50)
+m2$accuracy
+
+# Compute the 10-fold cross-validation accuracy for the model
+eztune_cv(x, y, m2)
+
+```
+
+**Tune an SVM using 25\% of the data as a training set and compute 
+the accuracy with 10-fold cross validation**
+
+```{r}
+# Optimize SVM with 25% of the observations as a training dataset
+# using a genetic algorithm
+m3 <- eztune(x, y, method = "svm", optimizer = "ga", fast = 0.25)
+m3$accuracy
+
+# Compute the 10-fold cross-validation accuracy for the model
+eztune_cv(x, y, m3)
+
+```
+
+
