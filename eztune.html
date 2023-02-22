@@ -31,7 +31,7 @@
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
@@ -267,8 +267,8 @@ $(document).ready(function () {
   </a>
 </li>
 <li>
-  <a href="eztune.html">
-    <span class="fa fa-music"></span>
+  <a href="cv.pdf">
+    <span class="fa fa-file-pdf-o"></span>
      
     CV
   </a>
@@ -367,10 +367,10 @@ m1$accuracy</code></pre>
 <pre class="r"><code># Compute the 10-fold cross-validation accuracy for the model
 eztune_cv(x, y, m1)</code></pre>
 <pre><code>## $accuracy
-## [1] 0.77
+## [1] 0.67
 ## 
 ## $auc
-## [1] 0.7648953</code></pre>
+## [1] 0.6864</code></pre>
 <p><strong>Tune a GBM using 50 of the data as the training set and
 compute the accuracy with 10-fold cross validation</strong></p>
 <pre class="r"><code># Optimize GBM using training set of 50 observations and Hooke-Jeeves
@@ -380,10 +380,10 @@ m2$accuracy</code></pre>
 <pre class="r"><code># Compute the 10-fold cross-validation accuracy for the model
 eztune_cv(x, y, m2)</code></pre>
 <pre><code>## $accuracy
-## [1] 0.61
+## [1] 0.64
 ## 
 ## $auc
-## [1] 0.6034622</code></pre>
+## [1] 0.64</code></pre>
 <p><strong>Tune an SVM using 25% of the data as a training set and
 compute the accuracy with 10-fold cross validation</strong></p>
 <pre class="r"><code># Optimize SVM with 25% of the observations as a training dataset
@@ -394,10 +394,10 @@ m3$accuracy</code></pre>
 <pre class="r"><code># Compute the 10-fold cross-validation accuracy for the model
 eztune_cv(x, y, m3)</code></pre>
 <pre><code>## $accuracy
-## [1] 0.77
+## [1] 0.67
 ## 
 ## $auc
-## [1] 0.7830113</code></pre>
+## [1] 0.6972</code></pre>
 
 
 

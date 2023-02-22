@@ -14,8 +14,8 @@ navbar:
       icon: fa-cube 
       href: eztune.html
     - text: "CV"
-      icon: fa-music 
-      href: eztune.html
+      icon: fa-file-pdf-o 
+      href: cv.pdf
   right:
     - text: "Contact me"
       icon: fa-envelope-o
@@ -26,6 +26,7 @@ navbar:
 output:
   html_document:
     theme: cosmo
+    highlight: textmate
     
     
     
