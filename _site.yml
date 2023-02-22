@@ -19,7 +19,10 @@ navbar:
       href: mailto:jlundell@ds.dfci.harvard.edu        # CHANGE HERE 
     - text: "GitHub"
       icon: fa-github
-      href: https://github.com/jillbo1000       # CHANGE HERE 
+      href: https://github.com/jillbo1000?tab=repositories       # CHANGE HERE 
 output:
   html_document:
-    theme: superhero
+    theme: lumen
+    
+    
+    
