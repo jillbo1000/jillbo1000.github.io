@@ -1,4 +1,39 @@
-EZtune is an R package that automatically tunes hyperparameters for supervised learning models.
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>EZtune: automatic hyperparameter tuning for supervised learning</title>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>EZtune: automatic hyperparameter tuning for supervised learning</title>
+<meta name="generator" content="Jekyll v4.3.2" />
+<meta property="og:title" content="EZtune: automatic hyperparameter tuning for supervised learning" />
+<meta name="author" content="Jill Lundell" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="http://localhost:4000/history/eztune.Rmd" />
+<meta property="og:url" content="http://localhost:4000/history/eztune.Rmd" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="EZtune: automatic hyperparameter tuning for supervised learning" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Jill Lundell"},"headline":"EZtune: automatic hyperparameter tuning for supervised learning","url":"http://localhost:4000/history/eztune.Rmd"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+  <body>
+    <nav>
+  
+    <a href="/" >Home</a>
+  
+    <a href="/about.html" >About</a>
+  
+    <a href="/blog.html" >Blog</a>
+  
+    <a href="/staff.html" >Staff</a>
+  
+</nav>
+    EZtune is an R package that automatically tunes hyperparameters for supervised learning models.
 
 
 <!--more-->
@@ -91,3 +126,6 @@ eztune_cv(x, y, m3)
 ```
 
 
+
+  </body>
+</html>
