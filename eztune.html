@@ -17,7 +17,7 @@
 <script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/lumen.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -247,23 +247,30 @@ $(document).ready(function () {
       <ul class="nav navbar-nav">
         <li>
   <a href="index.html">
-    <span class="fa fa-home"></span>
-     
-    Home
-  </a>
-</li>
-<li>
-  <a href="about.html">
     <span class="fa fa-user"></span>
      
     About
   </a>
 </li>
 <li>
+  <a href="about.html">
+    <span class="fa fa-pen-fancy"></span>
+     
+    Publications
+  </a>
+</li>
+<li>
+  <a href="eztune.html">
+    <span class="fa fa-cube"></span>
+     
+    Packages
+  </a>
+</li>
+<li>
   <a href="eztune.html">
     <span class="fa fa-music"></span>
      
-    EZtune
+    CV
   </a>
 </li>
       </ul>
@@ -360,10 +367,10 @@ m1$accuracy</code></pre>
 <pre class="r"><code># Compute the 10-fold cross-validation accuracy for the model
 eztune_cv(x, y, m1)</code></pre>
 <pre><code>## $accuracy
-## [1] 0.72
+## [1] 0.77
 ## 
 ## $auc
-## [1] 0.7672414</code></pre>
+## [1] 0.7648953</code></pre>
 <p><strong>Tune a GBM using 50 of the data as the training set and
 compute the accuracy with 10-fold cross validation</strong></p>
 <pre class="r"><code># Optimize GBM using training set of 50 observations and Hooke-Jeeves
@@ -373,10 +380,10 @@ m2$accuracy</code></pre>
 <pre class="r"><code># Compute the 10-fold cross-validation accuracy for the model
 eztune_cv(x, y, m2)</code></pre>
 <pre><code>## $accuracy
-## [1] 0.71
+## [1] 0.61
 ## 
 ## $auc
-## [1] 0.6974548</code></pre>
+## [1] 0.6034622</code></pre>
 <p><strong>Tune an SVM using 25% of the data as a training set and
 compute the accuracy with 10-fold cross validation</strong></p>
 <pre class="r"><code># Optimize SVM with 25% of the observations as a training dataset
@@ -387,10 +394,10 @@ m3$accuracy</code></pre>
 <pre class="r"><code># Compute the 10-fold cross-validation accuracy for the model
 eztune_cv(x, y, m3)</code></pre>
 <pre><code>## $accuracy
-## [1] 0.7
+## [1] 0.77
 ## 
 ## $auc
-## [1] 0.7438424</code></pre>
+## [1] 0.7830113</code></pre>
 
 
 
