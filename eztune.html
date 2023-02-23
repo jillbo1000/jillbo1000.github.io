@@ -262,10 +262,10 @@ $(document).ready(function () {
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="mailto:jlundell@ds.dfci.harvard.edu">
-    <span class="fa fa-envelope-o"></span>
+  <a href="https://www.linkedin.com/in/jill-lundell-00894256/">
+    <span class="fa fa-linkedin"></span>
      
-    Contact me
+    LinkedIn
   </a>
 </li>
 <li>
@@ -347,14 +347,14 @@ x &lt;- sonar[, 1:10]
 # Optimize an SVM using the default fast setting and Hooke-Jeeves
 m1 &lt;- eztune(x, y)
 m1$loss</code></pre>
-<pre><code>## [1] 0.74</code></pre>
+<pre><code>## [1] 0.8</code></pre>
 <pre class="r"><code># Compute the 10-fold cross-validation accuracy for the model
 eztune_cv(x, y, m1)</code></pre>
 <pre><code>## $accuracy
-## [1] 0.65
+## [1] 0.7
 ## 
 ## $auc
-## [1] 0.7033011</code></pre>
+## [1] 0.7125652</code></pre>
 <p><strong>Tune a GBM using 50 of the data as the training set and
 compute the accuracy with 10-fold cross validation</strong></p>
 <pre class="r"><code># Optimize GBM using training set of 50 observations and Hooke-Jeeves
@@ -364,24 +364,24 @@ m2$loss</code></pre>
 <pre class="r"><code># Compute the 10-fold cross-validation accuracy for the model
 eztune_cv(x, y, m2)</code></pre>
 <pre><code>## $accuracy
-## [1] 0.66
+## [1] 0.69
 ## 
 ## $auc
-## [1] 0.6545894</code></pre>
+## [1] 0.6810518</code></pre>
 <p><strong>Tune an SVM using 25% of the data as a training set and
 compute the accuracy with 10-fold cross validation</strong></p>
 <pre class="r"><code># Optimize SVM with 25% of the observations as a training dataset
 # using a genetic algorithm
 m3 &lt;- eztune(x, y, method = &quot;svm&quot;, optimizer = &quot;ga&quot;, fast = 0.25)
 m3$loss</code></pre>
-<pre><code>## [1] 0.7733333</code></pre>
+<pre><code>## [1] 0.7866667</code></pre>
 <pre class="r"><code># Compute the 10-fold cross-validation accuracy for the model
 eztune_cv(x, y, m3)</code></pre>
 <pre><code>## $accuracy
-## [1] 0.69
+## [1] 0.62
 ## 
 ## $auc
-## [1] 0.6884058</code></pre>
+## [1] 0.6423123</code></pre>
 
 
 

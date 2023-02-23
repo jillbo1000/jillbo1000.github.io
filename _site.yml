@@ -20,9 +20,9 @@ navbar:
       # icon: fa-file-pdf-o 
       href: cv.pdf
   right:
-    - text: "Contact me"
-      icon: fa-envelope-o
-      href: mailto:jlundell@ds.dfci.harvard.edu        # CHANGE HERE 
+    - text: "LinkedIn"
+      icon: fa-linkedin
+      href: https://www.linkedin.com/in/jill-lundell-00894256/        # CHANGE HERE 
     - text: "GitHub"
       icon: fa-github
       href: https://github.com/jillbo1000?tab=repositories       # CHANGE HERE 
