@@ -11,7 +11,7 @@
 
 
 
-<title>index.knit</title>
+<title>gwas-sim.knit</title>
 
 <script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -288,24 +288,41 @@ $(document).ready(function () {
 </div>
 
 
-<div style="display: flex;">
-<div>
-<p><img src="images/jill_circle.jpg" style="width:90.0%" /></p>
-</div>
-<div>
-<p>I am a Senior Statistician and postdoctoral researcher with a
-demonstrated history of working in academic research and the government
-relations industry. I am skilled in machine learning, omics, genetics,
-advanced visualization, big data analytics, environmental statistics,
-report writing, modeling, R and python programming. I am a research
-professional with a Doctor of Philosophy (Ph.D.) focused in Statistics
-from Utah State University and currently working on a postdoc in cancer
-research at the Harvard T.H. Chan School of Public Health and the
-Dana-Farber Cancer Institute Department of Data Science. I am passionate
-about providing practical solutions to scientific problems through
-research.</p>
-</div>
-</div>
+<hr />
+<hr />
+<p><img src="images/posts/dna_title.jpg" /></p>
+<p>My research requires simulated genome-wide association study (GWAS)
+data. Genetic data has a complex structure and properities such as
+linkage disequilibrium make simulating data non-trivial. This data
+simulator computes a phenotype from the genotypes using functional SNPs
+that are randomly selected. This method does not modify the genotype so
+the physical properties of the genome are retained. The user specifies
+the number of functional SNPs in the simulated data and chooses the
+heritability. In this simulator, heritability is the percentage of the
+variability in the phenotype that is explained by the genotype; it is
+the R<sup>2</sup> between the genotype and phenotype. The function
+generates random normal variables as coefficients for the functional
+SNPs. A phenotype is computed with a linear model using the normal
+variables as coefficients for the functional SNPs and zero as the
+coefficients for all other SNPs. The heritability is used to add noise
+to the resulting phenotype. This method was introduced to me by
+evolutionary geneticist, Zach Gompert.</p>
+<p>The data simulator function is gwas_sim and is part of the gwas3
+package available on Github. The package is fully documented and
+contains other functions related to GWAS that you may or may not find
+helpful. It can be downloaded using the following commands:</p>
+<pre class="r"><code>library(devtools)
+install_github(&quot;jillbo1000/gwas3&quot;)</code></pre>
+<p>The code can be found on my Github site at <a
+href="https://github.com/jillbo1000/gwas3">https://github.com/jillbo1000/gwas3</a></p>
+<p>This simulator is being updated to provide greater functionality and
+flexibility. Coming capabilities include</p>
+<ul>
+<li>Specified SNP locations instead of only random locations</li>
+<li>Control over the impact of a region or SNP</li>
+<li>Ability to use functions to define regions of influence rather than
+only single SNPs</li>
+</ul>
 
 
 

@@ -1,11 +1,24 @@
 ---
-
+title: "EZtune: automatic hyperparameter tuning for supervised learning"
+author: "Jill Lundell"
+date: 2019-11-20T21:13:14-05:00
+categories: ["Statistical learning"]
+tags: ["Statistical learning", "Support vector machines", "Gradient boosting machines", "Adaboost", "Tuning", "R"]
+thumbnailImage: images/machine_learning.jpg
+thumbnailImagePosition: left
+coverImage: images/machine_learning.jpg
+coverSize: partial
 ---
 
-![](images/posts/machine_learning_title.jpg){width=100%}
+EZtune is an R package that automatically tunes hyperparameters for supervised learning models.
 
 
-EZtune is an R package that autotunes support vector machines (SVMs), gradient boosting machines (GBMs), adaboost, and elastic net models with either a binary or continuous response variable. Other packages on CRAN will tune 
+<!--more-->
+
+
+
+EZtune is an R package that autotunes support vector machines (SVMs), gradient boosting machines (GBMs), 
+and adaboost models with either a binary or continuous response variable. Other packages on CRAN will tune 
 these models, but they can be difficult to use or are spread across many packages. EZtune was designed 
 to be simple to use, even for a novice R user, while maintaining high performance. EZtune was built using
 the following principles: 
@@ -54,7 +67,7 @@ x <- sonar[, 1:10]
 
 # Optimize an SVM using the default fast setting and Hooke-Jeeves
 m1 <- eztune(x, y)
-m1$loss
+m1$accuracy
 
 # Compute the 10-fold cross-validation accuracy for the model
 eztune_cv(x, y, m1)
@@ -68,7 +81,7 @@ the accuracy with 10-fold cross validation**
 ```{r}
 # Optimize GBM using training set of 50 observations and Hooke-Jeeves
 m2 <- eztune(x, y, method = "gbm", fast = 50)
-m2$loss
+m2$accuracy
 
 # Compute the 10-fold cross-validation accuracy for the model
 eztune_cv(x, y, m2)
@@ -82,7 +95,7 @@ the accuracy with 10-fold cross validation**
 # Optimize SVM with 25% of the observations as a training dataset
 # using a genetic algorithm
 m3 <- eztune(x, y, method = "svm", optimizer = "ga", fast = 0.25)
-m3$loss
+m3$accuracy
 
 # Compute the 10-fold cross-validation accuracy for the model
 eztune_cv(x, y, m3)

@@ -1,0 +1,58 @@
+---
+title: "Posts"
+---
+
+:::: {style="display: flex;"}
+
+::: {.column width="25%"}
+
+![](images/posts/machine_learning_icon.jpg){width=90%}
+
+:::
+
+::: {.column width="75%"}
+## [EZtune: automatic hyperparameter tuning for supervised learning](eztune.html)
+
+EZtune is an R package that automatically tunes hyperparameters for supervised learning models.This post provides a brief example of how to use the package.  [Read more](eztune.html).
+
+:::
+
+::::
+
+
+
+:::: {style="display: flex;"}
+
+::: {.column width="25%"}
+
+![](images/posts/dna_icon.jpg){width=90%}
+
+:::
+
+::: {.column width="75%"}
+## [Data simulator for genome-wide association studies](gwas-sim.html)
+
+I created a data simulator for GWAS that preserves all of the properties of the genotype. [Continue reading](gwas-sim.html).
+
+:::
+
+::::
+
+
+
+:::: {style="display: flex;"}
+
+::: {.column width="25%"}
+
+![](images/posts/umbrellas_icon.jpg){width=90%}
+
+:::
+
+::: {.column width="75%"}
+## [Data Expo: let's talk about the weather](data-expo.html)
+
+We used visualization and statistical learning to analyze the relationship between weather and forecast accuracy in the United States. [Continue reading](data-expo.html).
+
+:::
+
+::::

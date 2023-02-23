@@ -9,10 +9,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Jill Lundell" />
 
 
-<title>EZtune: automatic hyperparameter tuning for supervised learning</title>
+<title>eztune.knit</title>
 
 <script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -246,32 +245,19 @@ $(document).ready(function () {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">
-    <span class="fa fa-user"></span>
-     
-    About
-  </a>
+  <a href="index.html">About</a>
 </li>
 <li>
-  <a href="about.html">
-    <span class="fa fa-pen-fancy"></span>
-     
-    Publications
-  </a>
+  <a href="packages.html">Packages</a>
 </li>
 <li>
-  <a href="eztune.html">
-    <span class="fa fa-cube"></span>
-     
-    Packages
-  </a>
+  <a href="posts.html">Posts</a>
 </li>
 <li>
-  <a href="cv.pdf">
-    <span class="fa fa-file-pdf-o"></span>
-     
-    CV
-  </a>
+  <a href="publications.html">Publications</a>
+</li>
+<li>
+  <a href="cv.pdf">CV</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -298,23 +284,21 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">EZtune: automatic hyperparameter tuning for
-supervised learning</h1>
-<h4 class="author">Jill Lundell</h4>
 
 </div>
 
 
-<p>EZtune is an R package that automatically tunes hyperparameters for
-supervised learning models.</p>
-<!--more-->
+<hr />
+<hr />
+<p><img src="images/posts/machine_learning_title.jpg"
+style="width:100.0%" /></p>
 <p>EZtune is an R package that autotunes support vector machines (SVMs),
-gradient boosting machines (GBMs), and adaboost models with either a
-binary or continuous response variable. Other packages on CRAN will tune
-these models, but they can be difficult to use or are spread across many
-packages. EZtune was designed to be simple to use, even for a novice R
-user, while maintaining high performance. EZtune was built using the
-following principles:</p>
+gradient boosting machines (GBMs), adaboost, and elastic net models with
+either a binary or continuous response variable. Other packages on CRAN
+will tune these models, but they can be difficult to use or are spread
+across many packages. EZtune was designed to be simple to use, even for
+a novice R user, while maintaining high performance. EZtune was built
+using the following principles:</p>
 <p><strong>Predetermined hyperparameter space</strong>: Extensive grid
 searches were done to identify hyperparameter spaces where good models
 are found across many datasets. These hyperparameter spaces are coded
@@ -362,42 +346,42 @@ x &lt;- sonar[, 1:10]
 
 # Optimize an SVM using the default fast setting and Hooke-Jeeves
 m1 &lt;- eztune(x, y)
-m1$accuracy</code></pre>
-<pre><code>## NULL</code></pre>
+m1$loss</code></pre>
+<pre><code>## [1] 0.74</code></pre>
 <pre class="r"><code># Compute the 10-fold cross-validation accuracy for the model
 eztune_cv(x, y, m1)</code></pre>
 <pre><code>## $accuracy
-## [1] 0.68
+## [1] 0.65
 ## 
 ## $auc
-## [1] 0.7083333</code></pre>
+## [1] 0.7033011</code></pre>
 <p><strong>Tune a GBM using 50 of the data as the training set and
 compute the accuracy with 10-fold cross validation</strong></p>
 <pre class="r"><code># Optimize GBM using training set of 50 observations and Hooke-Jeeves
 m2 &lt;- eztune(x, y, method = &quot;gbm&quot;, fast = 50)
-m2$accuracy</code></pre>
-<pre><code>## NULL</code></pre>
+m2$loss</code></pre>
+<pre><code>## [1] 0.78</code></pre>
 <pre class="r"><code># Compute the 10-fold cross-validation accuracy for the model
 eztune_cv(x, y, m2)</code></pre>
 <pre><code>## $accuracy
-## [1] 0.67
+## [1] 0.66
 ## 
 ## $auc
-## [1] 0.6666667</code></pre>
+## [1] 0.6545894</code></pre>
 <p><strong>Tune an SVM using 25% of the data as a training set and
 compute the accuracy with 10-fold cross validation</strong></p>
 <pre class="r"><code># Optimize SVM with 25% of the observations as a training dataset
 # using a genetic algorithm
 m3 &lt;- eztune(x, y, method = &quot;svm&quot;, optimizer = &quot;ga&quot;, fast = 0.25)
-m3$accuracy</code></pre>
-<pre><code>## NULL</code></pre>
+m3$loss</code></pre>
+<pre><code>## [1] 0.7733333</code></pre>
 <pre class="r"><code># Compute the 10-fold cross-validation accuracy for the model
 eztune_cv(x, y, m3)</code></pre>
 <pre><code>## $accuracy
-## [1] 0.72
+## [1] 0.69
 ## 
 ## $auc
-## [1] 0.7423878</code></pre>
+## [1] 0.6884058</code></pre>
 
 
 

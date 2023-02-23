@@ -5,16 +5,19 @@ navbar:
   type: inverse
   left:
     - text: "About"
-      icon: fa-user
+      # icon: fa-user
       href: index.html
-    - text: "Publications"
-      icon: fa-pen-fancy 
-      href: about.html
     - text: "Packages"
-      icon: fa-cube 
-      href: eztune.html
+      # icon: fa-cube 
+      href: packages.html
+    - text: "Posts"
+      # icon: fa-blog
+      href: posts.html
+    - text: "Publications"
+      # icon: fa-pen-fancy 
+      href: publications.html
     - text: "CV"
-      icon: fa-file-pdf-o 
+      # icon: fa-file-pdf-o 
       href: cv.pdf
   right:
     - text: "Contact me"

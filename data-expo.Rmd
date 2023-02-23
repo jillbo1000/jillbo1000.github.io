@@ -1,0 +1,37 @@
+---
+
+---
+
+![](images/posts/data_expo_title.jpg)
+
+The 2018 Data Expo was a national data competition held at the Joint Statistical 
+Meetings (JSM) in Vancouver, Canada. It is currently held every year, but prior 
+to 2019 it was held approximately every three years. Participants were provided 
+three years of weather forecast data for 113 cities across the United States that 
+was harvested from the National Weather Service and three years of historical 
+weather for the same sites. Teams cleaned the data, developed their own study 
+questions, and dove into the data for approximately six months. The results were 
+presented during a speed poster session at JSM. My team consisted of myself, 
+Brennan Bean, and our mentor, J&uuml;rgen Symanzik. We took second place.
+
+**Our study questions**
+
+* Do U.S. weather stations cluster into regions based on weather characteristics?
+* How to error variables correlate and do these correlations change by region? 
+* Do forecast errors change by region and by season?
+* Where are the best and worst forecast accurcies?
+* Which variables are important in determining forecast errors? 
+
+We found that the U.S. clearly clusters into weather regions, even when 
+the spatial relationship between cities is not used as a covariate. This 
+clustering led us to find strong seasonal effects in forecast accuracy in 
+several regions and find a set of variables within each region that had 
+the largest impact on forecasts. We developed a Shiny App to aid in cluster 
+exploration. The links to our Shiny app and proceedings paper are below. 
+A paper has been submitted to the Journal of Computational Statistics. 
+
+[Shiny App](https://jilllundell.shinyapps.io/finaldataexpoapp/)
+
+[Proceedings Paper](https://www.researchgate.net/publication/337335002_Let's_Talk_About_the_Weather)
+
+
