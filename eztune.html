@@ -347,41 +347,41 @@ x &lt;- sonar[, 1:10]
 # Optimize an SVM using the default fast setting and Hooke-Jeeves
 m1 &lt;- eztune(x, y)
 m1$loss</code></pre>
-<pre><code>## [1] 0.8</code></pre>
+<pre><code>## [1] 0.86</code></pre>
 <pre class="r"><code># Compute the 10-fold cross-validation accuracy for the model
 eztune_cv(x, y, m1)</code></pre>
 <pre><code>## $accuracy
-## [1] 0.73
+## [1] 0.81
 ## 
 ## $auc
-## [1] 0.7007028</code></pre>
+## [1] 0.7935537</code></pre>
 <p><strong>Tune a GBM using 50 of the data as the training set and
 compute the accuracy with 10-fold cross validation</strong></p>
 <pre class="r"><code># Optimize GBM using training set of 50 observations and Hooke-Jeeves
 m2 &lt;- eztune(x, y, method = &quot;gbm&quot;, fast = 50)
 m2$loss</code></pre>
-<pre><code>## [1] 0.8</code></pre>
+<pre><code>## [1] 0.84</code></pre>
 <pre class="r"><code># Compute the 10-fold cross-validation accuracy for the model
 eztune_cv(x, y, m2)</code></pre>
 <pre><code>## $accuracy
-## [1] 0.68
+## [1] 0.72
 ## 
 ## $auc
-## [1] 0.6618437</code></pre>
+## [1] 0.7172583</code></pre>
 <p><strong>Tune an SVM using 25% of the data as a training set and
 compute the accuracy with 10-fold cross validation</strong></p>
 <pre class="r"><code># Optimize SVM with 25% of the observations as a training dataset
 # using a genetic algorithm
 m3 &lt;- eztune(x, y, method = &quot;svm&quot;, optimizer = &quot;ga&quot;, fast = 0.25)
 m3$loss</code></pre>
-<pre><code>## [1] 0.7733333</code></pre>
+<pre><code>## [1] 0.8133333</code></pre>
 <pre class="r"><code># Compute the 10-fold cross-validation accuracy for the model
 eztune_cv(x, y, m3)</code></pre>
 <pre><code>## $accuracy
-## [1] 0.67
+## [1] 0.75
 ## 
 ## $auc
-## [1] 0.6614303</code></pre>
+## [1] 0.8017136</code></pre>
 
 
 

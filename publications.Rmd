@@ -12,7 +12,7 @@ Haney T, Lundell JF. Historical data analysis supporting the data quality object
 
 Lundell JF. Am-241, Pu-238, Pu-239/240, and Sr-90 decision levels for the environmental air monitoring program for the Idaho National Laboratory. https://doi.org/10.2172/1875115. [Link to report](https://doi.org/10.2172/1875115)
 
-Lundell JF. Tuning hyperparameters in supervised learning models and applications of statistical learning in genome-wide association studies with emphasis on heritability. Unpublished Doctoral dissertation. Utah State University. August 2019. https://doi.org/10.26076/a37e-facb [Link to dissertation](https://doi.org/10.26076/a37e-facb) 
+Lundell JF. Tuning hyperparameters in supervised learning models and applications of statistical learning in genome-wide association studies with emphasis on heritability. Unpublished Doctoral dissertation. Utah State University. August 2019. https://doi.org/10.26076/a37e-facb. [Link to dissertation](https://doi.org/10.26076/a37e-facb) 
 
 Lundell JF, Bean B, Symanzik J. Let’s talk about the weather. JSM Proceedings, Statistical Computing Section. Alexandria, VA: American Statistical Association. 2018. [Link to paper](papers/data_expo.pdf) 
 
