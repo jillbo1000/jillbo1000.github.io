@@ -1,19 +1,20 @@
 ---
-title: ""
+title: "Jill Lundell"
 ---
 
-:::: {style="display: flex;"}
+```{r echo = FALSE}
+knitr::opts_chunk$set(echo = FALSE, fig.align="center")
+```
 
-::: {}
 
-![](images/jill_circle.jpg){width=90%}
+<center>
 
-:::
+![](images/jill_circle.jpg){width=25%}
 
-::: {}
+</center>
+
+
+::: {#hello .greeting .message style="font-size: 15pt; font-family:Calibri, sans-serif"}
 I am a Senior Statistician and postdoctoral researcher with a demonstrated history of working in academic research and the government relations industry. I am skilled in machine learning, omics, genetics, advanced visualization, big data analytics, environmental statistics, report writing, modeling, R and python programming. I am a research professional with a Doctor of Philosophy (Ph.D.) focused in Statistics from Utah State University and currently working on a postdoc in cancer research at the Harvard T.H. Chan School of Public Health and the Dana-Farber Cancer Institute Department of Data Science. I am passionate about providing practical solutions to scientific problems through research.
-
 :::
-
-::::
 

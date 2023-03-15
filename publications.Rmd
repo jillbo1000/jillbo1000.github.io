@@ -2,18 +2,22 @@
 title: "Publications"
 ---
 
-Haney T, Lundell JF. Historical data analysis supporting the data quality objectives for the INL site environmental soil monitoring program. INL/INT-15-37431 Revision No. 0.  February 2021.
+Lundell JF. Tuning support vector machines and boosted trees using optimization algorithms. ArXiv:2303.07400. March 2023. https://doi.org/10.48550/arxiv.2303.07400. [Link to paper](papers/autotune_arxiv.pdf)
 
-Lundell JF, Bean B, and Symanzik J. Let’s talk about the weather: a cluster-based approach to weather forecast accuracy. Accepted by Computational Statistics February 2023. 
+Lundell JF, Bean B, and Symanzik J. Let’s talk about the weather: a cluster-based approach to weather forecast accuracy. Accepted by Computational Statistics February 2023. ArXiv.2303.05484. https://doi.org/10.48550/arXiv.2303.05484. [Link to paper](papers/lets_talk_about_the_weather_arxiv.pdf)
 
-Lundell JF. Am-241, Pu-238, Pu-239/240, and Sr-90 decision levels for the environmental air monitoring program for the Idaho National Laboratory. 
+Lundell JF. EZtune: A Package for Automated Hyperparameter Tuning in R. March 2023. [Link to paper](papers/eztune_archive_paper.pdf)
 
-Lundell JF. Tuning hyperparameters in supervised learning models and applications of statistical learning in genome-wide association studies with emphasis on heritability. Unpublished Doctoral dissertation. Utah State University. August 2019. [Link to paper](https://doi.org/10.26076/a37e-facb) 
+Haney T, Lundell JF. Historical data analysis supporting the data quality objectives for the INL site environmental soil monitoring program. INL/INT-15-37431 Revision No. 0.  February 2021. https://doi.org/10.2172/1769951. [Link to report](https://doi.org/10.2172/1769951)
+
+Lundell JF. Am-241, Pu-238, Pu-239/240, and Sr-90 decision levels for the environmental air monitoring program for the Idaho National Laboratory. https://doi.org/10.2172/1875115. [Link to report](https://doi.org/10.2172/1875115)
+
+Lundell JF. Tuning hyperparameters in supervised learning models and applications of statistical learning in genome-wide association studies with emphasis on heritability. Unpublished Doctoral dissertation. Utah State University. August 2019. https://doi.org/10.26076/a37e-facb [Link to dissertation](https://doi.org/10.26076/a37e-facb) 
 
 Lundell JF, Bean B, Symanzik J. Let’s talk about the weather. JSM Proceedings, Statistical Computing Section. Alexandria, VA: American Statistical Association. 2018. [Link to paper](papers/data_expo.pdf) 
 
 Lundell JF. There has to be an easier way: a simple alternative for parameter tuning of supervised learning methods. JSM Proceedings, Statistical Computing Section. Alexandria, VA: American Statistical Association. 2017. [Link to paper](papers/easier_way.pdf)
 
-Lundell JF, Magnuson SO, Scherbinske P, Case MJ. Data quality objectives supporting the environmental direct radiation monitoring program for the Idaho National Laboratory. INL/EXT-15-34803. June 2015. 
+Lundell JF, Magnuson SO, Scherbinske P, Case MJ. Data quality objectives supporting the environmental direct radiation monitoring program for the Idaho National Laboratory. INL/EXT-15-34803. June 2015. https://doi.org/10.2172/1194017. [Link to report](https://doi.org/10.2172/1194017)
 
-Lundell JF. On the model selection in a frailty setting, Unpublished Master’s Thesis. Utah State University Department of Mathematics and Statistics. August 1998. [Link to paper](https://doi.org/10.26076/c6cf-ceeb)
+Lundell JF. On the model selection in a frailty setting, Unpublished Master’s Thesis. Utah State University Department of Mathematics and Statistics. August 1998. https://doi.org/10.26076/c6cf-ceeb. [Link to thesis](https://doi.org/10.26076/c6cf-ceeb)

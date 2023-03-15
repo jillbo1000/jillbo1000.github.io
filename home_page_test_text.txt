@@ -1,0 +1,55 @@
+---
+title: "Jill Lundell"
+---
+
+```{r echo = FALSE}
+knitr::opts_chunk$set(echo = FALSE, fig.align="center")
+```
+
+
+<center>
+
+![](images/jill_circle.jpg){width=25%}
+
+</center>
+
+```{css, echo=FALSE}
+.watch-out {
+  background-color: lightpink;
+  border: 3px solid red;
+  font-weight: bold;
+}
+```
+
+Then we assign a class `watch-out` to the code chunk via the
+chunk option `class.source`.
+
+```{r class.source="watch-out"}
+mtcars[1:5, "mpg"]
+```
+
+:::: {.center data-latex=""}
+
+::: {.minipage data-latex="{.5\linewidth}"}
+This paragraph will be centered on the page, and
+its width is 50% of the width of its parent element.
+:::
+
+::::
+
+::: {#hello .greeting .message style="color: red; font-family:Georgia"}
+Hello **world**!
+:::
+
+.blackbox {
+  padding: 1em;
+  background: black;
+  color: white;
+  border: 2px solid orange;
+  border-radius: 10px;
+}
+.center {
+  text-align: center;
+}
+
+I am a Senior Statistician and postdoctoral researcher with a demonstrated history of working in academic research and the government relations industry. I am skilled in machine learning, omics, genetics, advanced visualization, big data analytics, environmental statistics, report writing, modeling, R and python programming. I am a research professional with a Doctor of Philosophy (Ph.D.) focused in Statistics from Utah State University and currently working on a postdoc in cancer research at the Harvard T.H. Chan School of Public Health and the Dana-Farber Cancer Institute Department of Data Science. I am passionate about providing practical solutions to scientific problems through research.
