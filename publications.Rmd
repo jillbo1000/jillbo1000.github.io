@@ -6,7 +6,7 @@ Lundell JF. Tuning support vector machines and boosted trees using optimization 
 
 Lundell JF, Bean B, and Symanzik J. Let’s talk about the weather: a cluster-based approach to weather forecast accuracy. Accepted by Computational Statistics February 2023. ArXiv.2303.05484. https://doi.org/10.48550/arXiv.2303.05484. [Link to paper](papers/lets_talk_about_the_weather_arxiv.pdf)
 
-Lundell JF. EZtune: A Package for Automated Hyperparameter Tuning in R. ArXiv:2303.12177. March 2023. https://doi.org/10.48550/arXiv.2303.12177. [Link to paper](papers/eztune_archive_paper.pdf)
+Lundell JF. EZtune: A Package for Automated Hyperparameter Tuning in R. ArXiv:2303.12177. March 2023. https://doi.org/10.48550/arXiv.2303.12177. [Link to paper](papers/eztune_archive_paper.pdf). Under review.
 
 Haney T, Lundell JF. Historical data analysis supporting the data quality objectives for the INL site environmental soil monitoring program. INL/INT-15-37431 Revision No. 0.  February 2021. https://doi.org/10.2172/1769951. [Link to report](https://doi.org/10.2172/1769951)
 
